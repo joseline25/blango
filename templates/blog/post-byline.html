@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 {% load blog_extras %} 
 <small>By {% author_details_tag %} on {{ post.published_at|date:"M, d Y" }}</small>
+=======
+{% load blog_extras %}
+<small>By {{ post.author|author_details:request.user }} on {{ post.published_at|date:"M, d Y" }}</small>
+>>>>>>> a81208007da7b52442be7ef013deea0f5358282e

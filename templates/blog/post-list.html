@@ -1,7 +1,11 @@
 <h4>{{ title }}</h4>
 <ul>
 {% for post in posts %}
+<<<<<<< HEAD
 <li><a href="{% url "blog-post-detail" post.slug %}">Read
 More</a></li>
+=======
+    <li><a href="{% url "blog-post-detail" post.slug %}">{{ post.title }}</a></li>
+>>>>>>> a81208007da7b52442be7ef013deea0f5358282e
 {% endfor %}
 </ul>
