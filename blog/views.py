@@ -6,6 +6,6 @@ from blog.models import Post
 
 def index(request):
     # fetch all the Post objects in the system
-    posts = Post.objects.filter()
+    posts = Post.objects.filter(published_at__lte=timezone.now())
     return render(request, "blog/index.html", {"posts": posts})
     
