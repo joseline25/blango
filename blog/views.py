@@ -7,11 +7,11 @@ from blog.forms import CommentForm
 # Create your views here.
 
 def index(request):
-<<<<<<< HEAD
-  # fetch all the Post objects in the system
-  posts = Post.objects.filter()
 
-  return render(request, "blog/index.html", {"posts": posts})
+  # fetch all the Post objects in the system
+  
+    posts = Post.objects.filter(published_at__lte=timezone.now())
+    return render(request, "blog/index.html", {"posts": posts})
     
 
 def post_detail(request, slug):
@@ -33,12 +33,10 @@ def post_detail(request, slug):
     comment_form = None
 
   return render(request, "blog/post-detail.html", {"post": post, "comment_form": comment_form})
-=======
-    # fetch all the Post objects in the system
-    posts = Post.objects.filter(published_at__lte=timezone.now())
-    return render(request, "blog/index.html", {"posts": posts})
+
+    
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, "blog/post-detail.html", {"post": post})
->>>>>>> a81208007da7b52442be7ef013deea0f5358282e
+

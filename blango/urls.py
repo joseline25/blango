@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path
 import blog.views
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", blog.views.index),
-<<<<<<< HEAD
-    path("post/<slug>/", blog.views.post_detail, name="blog-post-detail")
-=======
+
     path("post/<slug>/", blog.views.post_detail, name="blog-post-detail"),
->>>>>>> a81208007da7b52442be7ef013deea0f5358282e
+
 ]

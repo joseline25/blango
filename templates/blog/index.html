@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {% extends "base.html" %} 
 
 {% load blog_extras %} 
@@ -17,23 +17,6 @@
   </div> 
   {% endrow %} 
 {% endfor %} 
-=======
-{% extends "base.html" %}
-{% load blog_extras %}
-{% block content %}
-    <h2>Blog Posts</h2>
-    {% for post in posts %}
-    {% row "border-bottom" %}
-        <div class="col">
-            <h3>{{ post.title }}</h3>
-            {% include "blog/post-byline.html" %}
-            <p>{{ post.summary }}</p>
-            <p>
-                ({{ post.content|wordcount }} words)
-                <a href="{% url "blog-post-detail" post.slug %}">Read More</a>
-            </p>
-        </div>
-    {% endrow %}
-    {% endfor %}
->>>>>>> a81208007da7b52442be7ef013deea0f5358282e
+
+
 {% endblock %}

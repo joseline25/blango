@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {% extends "base.html" %} 
 {% load blog_extras %} 
 {% block content %} 
@@ -24,28 +24,4 @@
   {% endrow %}
 
   {% endblock %} 
-=======
-{% extends "base.html" %}
-{% load blog_extras %}
-{% block content %}
-<h2>{{ post.title }}</h2>
-{% row %}
-    <div class="col">
-        {% include "blog/post-byline.html" %}
-    </div>
-{% endrow %}
-{% row %}
-    <div class="col">
-        {{ post.content|safe }}
-    </div>
-{% endrow %}
 
-{% row %}
-    {% col %}
-        {% recent_posts post %}
-    {% endcol %}
-{% endrow %}
-{% endblock %}
-
-
->>>>>>> a81208007da7b52442be7ef013deea0f5358282e

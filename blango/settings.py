@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from configurations import Configuration
+from configurations import values
+import dj_database_url
 
 class Dev(Configuration):
 
@@ -85,12 +87,19 @@ class Dev(Configuration):
     # Database
     # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': BASE_DIR / 'db.sqlite3',
+    #     }
+    # }
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+    "default": dj_database_url.config(default=f"sqlite:///{BASE_DIR}/db.sqlite3"),
+    "alternative": dj_database_url.config(
+        "ALTERNATIVE_DATABASE_URL",
+        default=f"sqlite:///{BASE_DIR}/alternative_db.sqlite3",
+        ),
+      }
 
 
     # Password validation
@@ -117,7 +126,8 @@ class Dev(Configuration):
 
     LANGUAGE_CODE = 'en-us'
 
-    TIME_ZONE = 'UTC'
+    TIME_ZONE = values.Value("UTC")
+    # TIME_ZONE = values.Value("Pacific/Auckland", environ_prefix="BLANGO")
 
     USE_I18N = True
 
@@ -148,3 +158,10 @@ class Dev(Configuration):
     # cripy 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+    ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
+
+
+class Prod(Dev):
+    DEBUG = False
+    SECRET_KEY = values.SecretValue()
